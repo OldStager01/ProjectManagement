@@ -18,6 +18,9 @@ const app = express();
 app.get("/favicon.ico", (req, res) => {
   res.status(204).send(); // No content response
 });
+app.get("/favicon.png", (req, res) => {
+  res.status(204).send(); // No content response
+});
 // Get the directory name
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
