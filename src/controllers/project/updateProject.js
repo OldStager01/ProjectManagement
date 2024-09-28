@@ -46,3 +46,5 @@ const updateProject = asyncWrapper(async (req, res) => {
     }),
   );
 });
+
+export default updateProject;

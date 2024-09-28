@@ -5,7 +5,7 @@ import ApiError from "../../utils/ApiError.js";
 import ApiResponse from "../../utils/ApiResponse.js";
 const createProject = asyncWrapper(async (req, res) => {
   //Destructure data from req body
-  const {
+  let {
     name,
     description,
     startDate,
@@ -39,7 +39,9 @@ const createProject = asyncWrapper(async (req, res) => {
   if (startDate > endDate) {
     throw new ApiError(400, "Start date cannot be greater than end date");
   }
-
+  if (!Array.isArray(stakeholders)) {
+    throw new ApiError(400, "Stakeholders must be an array");
+  }
   //Checking if valid stakeholder (stakeholderId) are provided
   const promises = stakeholders.map(async (stakeholder) => {
     if (!stakeholder) {
@@ -73,4 +75,4 @@ const createProject = asyncWrapper(async (req, res) => {
     .json(new ApiResponse(201, project, "Project created successfully"));
 });
 
-export { createProject };
+export default createProject;

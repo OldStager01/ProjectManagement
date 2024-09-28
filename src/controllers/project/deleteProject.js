@@ -19,3 +19,5 @@ const deleteProject = asyncWrapper(async (req, res) => {
     }),
   );
 });
+
+export default deleteProject;

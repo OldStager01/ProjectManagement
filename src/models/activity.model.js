@@ -1,16 +1,14 @@
 import { Schema, model } from "mongoose";
 
-const projectSchema = new Schema(
+const ActivitySchema = new Schema(
   {
     name: {
       type: String,
       required: true,
-      trim: true,
     },
     description: {
       type: String,
       required: true,
-      trim: true,
     },
     startDate: {
       type: Date,
@@ -20,22 +18,20 @@ const projectSchema = new Schema(
       type: Date,
       required: true,
     },
-    geographicalScope: {
-      type: String,
+    outputId: {
+      type: Schema.Types.ObjectId,
+      ref: "Output",
       required: true,
     },
-    stakeholders: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
+    projectId: {
+      type: Schema.Types.ObjectId,
+      ref: "Project",
+      required: true,
+    },
   },
-  {
-    timestamps: true,
-  },
+  { timestamps: true },
 );
 
-const Project = model("Project", projectSchema);
+const Activity = model("Activity", ActivitySchema);
 
-export default Project;
+export default Activity;
