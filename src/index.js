@@ -9,6 +9,7 @@ import serverless from "serverless-http";
 dotenv.config();
 
 // Connect to the database
+console.log("config.MONGO_URI");
 connectDB(config.MONGO_URI, DB_NAME)
   .then(() => {
     console.log(`Database connected successfully.`);
