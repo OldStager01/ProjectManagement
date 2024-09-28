@@ -39,7 +39,8 @@ import userRouter from "./routes/user.route.js";
 import projectRouter from "./routes/project.route.js";
 import reportRouter from "./routes/report.route.js";
 app.get("/", (req, res) => {
-  res.sendFile(join(__dirname, "../public/postman_collection.html"));
+  // res.sendFile(join(__dirname, "../public/postman_collection.html"));
+  res.send("hello world");
 });
 //! Routes as mentioned in the project document
 app.use("/api/users", userRouter);
