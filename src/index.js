@@ -20,4 +20,4 @@ connectDB(config.MONGO_URI, DB_NAME)
     console.error(e);
   });
 
-export const handler = serverless(app);
+export default serverless(app);
