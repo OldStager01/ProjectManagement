@@ -6,6 +6,7 @@ import app from "./app.js";
 import config from "./config/config.js";
 import connectDB from "./db/index.js";
 import { DB_NAME } from "./constants.js";
+import serverless from "serverless-http";
 
 connectDB(config.MONGO_URI, DB_NAME)
   .then(() => {
@@ -18,3 +19,5 @@ connectDB(config.MONGO_URI, DB_NAME)
   .catch((e) => {
     console.error(e);
   });
+
+export const handler = serverless(app);
