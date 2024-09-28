@@ -20,6 +20,8 @@ import dotenv from "dotenv"; // Ensure dotenv is imported
 
 dotenv.config();
 
+const app = express();
+
 // Connect to the database
 console.log(config.MONGO_URI);
 try {
@@ -29,13 +31,14 @@ try {
   console.error(`Database connection error: ${e}`);
 }
 
-const app = express();
+// Favicon routes
 app.get("/favicon.ico", (req, res) => {
   res.status(204).send(); // No content response
 });
 app.get("/favicon.png", (req, res) => {
   res.status(204).send(); // No content response
 });
+
 // Get the directory name
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -57,8 +60,8 @@ import userRouter from "./routes/user.route.js";
 import projectRouter from "./routes/project.route.js";
 import reportRouter from "./routes/report.route.js";
 app.get("/", (req, res) => {
-  // res.sendFile(join(__dirname, "../public/postman_collection.html"));
-  res.send("hello world");
+  res.sendFile(join(__dirname, "../public/postman_collection.html"));
+  // res.send("hello world");
 });
 //! Routes as mentioned in the project document
 app.use("/api/users", userRouter);
