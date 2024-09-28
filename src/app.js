@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import errorHandler from "./middlewares/errorHandler.js";
 import ApiError from "./utils/ApiError.js";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 import {
   addActivity,
   addCurrentOutcomeValue,
@@ -11,7 +13,12 @@ import {
   addOutcome,
   addOutput,
 } from "./controllers/project/dataCollection.js";
+import postman_collection from "./postman_collection.json" assert { type: "json" };
 const app = express();
+
+// Get the directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 //*Middlewares
 app.use(
@@ -21,7 +28,7 @@ app.use(
 );
 app.use(express.json({ limit: "16kb" })); //!Define the max incoming json size
 app.use(express.urlencoded({ extended: true, limit: "16kb" })); //!Define the max size of data from url
-app.use(express.static("public"));
+app.use(express.static(join(__dirname, "../public")));
 app.use(cookieParser());
 
 //*Routes
@@ -30,7 +37,7 @@ import userRouter from "./routes/user.route.js";
 import projectRouter from "./routes/project.route.js";
 import reportRouter from "./routes/report.route.js";
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.sendFile(join(__dirname, "../public/postman_collection.html"));
 });
 //! Routes as mentioned in the project document
 app.use("/api/users", userRouter);

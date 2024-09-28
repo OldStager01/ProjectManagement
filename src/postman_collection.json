@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "c3f7d6c8-1e51-4eb7-b85c-1530b0b0feec",
+		"name": "Project Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32744726"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "{{url}}/api/users/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Charlie Brown\",\n    \"email\": \"charlie.brown@example.com\",\n    \"password\": \"charliePass789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/users/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Create Project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Renewable Energy Project\",\n    \"description\": \"A project to implement renewable energy solutions in rural areas.\",\n    \"startDate\": \"2024-04-01T00:00:00.000Z\",\n    \"endDate\": \"2024-12-15T00:00:00.000Z\",\n    \"geographicalScope\": \"Texas\",\n    \"stakeholders\": [\"66f81f4109feccb75fc67135\",\"66f81f95c34b09e3e655d405\"]\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/projects",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/projects",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/projects/66f821ab81eded91f5da1567",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"66f821ab81eded91f5da1567"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"geographicalScope\":\"Nashik, Maharashtra\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/projects/66f821ab81eded91f5da1567",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"66f821ab81eded91f5da1567"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/projects/66f821cf81eded91f5da156a",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"66f821cf81eded91f5da156a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data Collection",
+			"item": [
+				{
+					"name": "Add Outcomes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Water Quality Improvement\",\n    \"description\": \"Enhance water quality in the region by reducing pollutants.\",\n    \"baselineValue\": 30,\n    \"targetValue\": 90,\n    \"projectId\": \"66f8221681eded91f5da156e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/outcomes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"outcomes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Outputs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Water Quality Testing\",\n    \"description\": \"Number of water quality tests performed in the region.\",\n    \"baselineValue\": 5,\n    \"targetValue\": 30,\n    \"currentValue\": 15,\n    \"outcomeId\": \"66f828640f20bd6bfca4ea2f\" // Example ObjectId of an Outcome\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/outputs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"outputs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Activities",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Water Quality Testing\",\n    \"description\": \"Conducting tests on local water sources for quality assessment.\",\n    \"startDate\": \"2024-03-05T08:00:00.000Z\",\n    \"endDate\": \"2024-03-05T17:00:00.000Z\",\n    \"outputId\": \"66f82a0cbe48ec8e8993ba65\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/activities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/projects/66f821ab81eded91f5da1567/data",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"projects",
+								"66f821ab81eded91f5da1567",
+								"data"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Project Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/reports/project/66f821ab81eded91f5da1567",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"project",
+								"66f821ab81eded91f5da1567"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Report",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/reports/export/excel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"export",
+								"excel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
