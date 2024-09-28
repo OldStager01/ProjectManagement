@@ -15,7 +15,9 @@ import {
 } from "./controllers/project/dataCollection.js";
 import postman_collection from "./postman_collection.json" assert { type: "json" };
 const app = express();
-
+app.get("/favicon.ico", (req, res) => {
+  res.status(204).send(); // No content response
+});
 // Get the directory name
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
